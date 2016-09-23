@@ -1,15 +1,30 @@
+import os
 from flask import Flask
-from admin import views, admin
-from admin.models import db
+from flask.ext.bootstrap import Bootstrap
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.login import LoginManager
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///databases/test.db'
+bootstrap = Bootstrap()
+db = SQLAlchemy()
+lm = LoginManager()
+lm.login_view = 'main.login'
 
 
-db.init_app(app)
-with app.app_context():
-    # Extensions like Flask-SQLAlchemy now know what the "current" app
-    # is while within this block. Therefore, you can now run........
-    db.create_all()
+def create_app(config_name):
+    """Create an application instance."""
+    app = Flask(__name__)
 
-app.register_blueprint(admin, url_prefix='/admin')
+    # import configuration
+    cfg = os.path.join(os.getcwd(), 'config', config_name + '.py')
+    app.config.from_pyfile(cfg)
+
+    # initialize extensions
+    bootstrap.init_app(app)
+    db.init_app(app)
+    lm.init_app(app)
+
+    # import blueprints
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    return app
