@@ -550,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474736101084</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Heroku 0.1">
+      <created>1474738151966</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1474738151966</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -594,7 +601,8 @@
     <MESSAGE value="Login" />
     <MESSAGE value="New Login" />
     <MESSAGE value="Heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="Heroku" />
+    <MESSAGE value="Heroku 0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Heroku 0.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
