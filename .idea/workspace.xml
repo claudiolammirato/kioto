@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08335ad4-4804-4829-bb58-93129fa78218" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/templates/register.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/__init__.py" afterPath="$PROJECT_DIR$/acqua/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/acqua/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-dev.sqlite3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/admin/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/admin/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/admin/routes.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/templates/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/templates/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/templates/login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/acqua/templates/protected.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kito.iws" />
@@ -458,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474652555839</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="New Login">
+      <created>1474727054108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1474727054109</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -499,7 +512,8 @@
     <MESSAGE value="Login Blueprint" />
     <MESSAGE value="Login Blueprint 0.1" />
     <MESSAGE value="Login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login" />
+    <MESSAGE value="New Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
