@@ -20,7 +20,6 @@ def login():
 def register():
     form1 = RegisterForm()
     if form1.validate_on_submit():
-        #User.register('john', 'cat', 'john.cat@aol.com')
         User.register(form1.username.data, form1.password.data, form1.email.data)
         return redirect(url_for('admin.login'))
     return render_template('register.html', form = form1)

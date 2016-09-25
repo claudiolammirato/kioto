@@ -1,22 +1,29 @@
-{% block title %}{% endblock %}
+<!doctype html>
 
-{% block navbar %}
+<title>Acqua</title>
 
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
-                <h1>Acqua</h1>
-                <li><a href="{{ url_for('admin.index') }}">Home</a></li>
-                <li><a href="{{ url_for('admin.protected') }}">Member</a></li>
-                {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
-                {% else %}
-                <li><a href="{{ url_for('admin.login') }}">Sign In</a></li>
-                <li><a href="{{ url_for('admin.register') }}">Register</a></li>
-                {% endif %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 
-{% endblock %}
+<div class="navbar">
 
-{% block content %}
+    <h1>Acqua</h1>
 
-{% block page_content %}{% endblock %}
+    <ul>
+        <li><a href="{{ url_for('admin.index') }}">Home</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('admin.protected') }}">Acquarium Dimensions</a></li>
+        <li><a href="{{ url_for('admin.protected') }}">Fish Database</a></li>
+        <li><a href="{{ url_for('admin.protected') }}">Plant Database</a></li>
+        <li><a href="{{ url_for('admin.protected') }}">Water Values</a></li>
+        <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('admin.login') }}">Sign In</a></li>
+        <li><a href="{{ url_for('admin.register') }}">Register</a></li>
+        {% endif %}
+    </ul>
 
-{% endblock %}
+</div>
+
+{% block body %}{% endblock %}
+
+

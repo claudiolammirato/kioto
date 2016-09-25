@@ -1,3 +1,34 @@
-h1 {
-color: red;
+div.navbar h1 {
+color: white;
+text-align: center;
+background-color: grey;
+padding: 14px;
+}
+
+div.navbar ul{
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden; /*libera la riga*/
+background-color: #333;
+}
+
+div.navbar li {
+float: left;
+}
+
+div.navbar li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+div.navbar li a:hover{
+background-color: #111;
+}
+
+body {
+    background-image: url("/static/images/sfondo_sabbia.jpg");
 }

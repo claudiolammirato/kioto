@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock %}
-
-{% block page_content %}
+{% block body%}
     <h1>Login</h1>
     <form method="post">
         {{ form.hidden_tag() }}
@@ -10,6 +8,5 @@
         {{ form.password.label }} {{ form.password }}
         {{ form.submit }}
     </form>
-
 
 {% endblock %}
