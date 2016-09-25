@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="register">
     <h1>Register</h1>
     <form method="post">
         {{ form.hidden_tag() }}
@@ -10,6 +11,6 @@
         {{ form.email.label }} {{ form.email }}
         {{ form.submit }}
     </form>
-
+</div>
 
 {% endblock %}

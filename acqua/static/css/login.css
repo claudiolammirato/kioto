@@ -1,0 +1,31 @@
+
+
+div.login {
+width: 400px;
+margin: 50px auto;
+}
+
+div.login h1 {
+color: white;
+border-radius: 20px 20px 0px 0px;
+border: 0px solid #f1f1f1;
+padding: 20px 26px;
+background-color: grey;
+margin: 0px;
+}
+
+div.login form{
+border: 0px solid #f1f1f1;
+border-radius: 0px 0px 20px 20px;
+padding: 20px 26px;
+background-color: #fff;
+margin: 0px;
+}
+
+div.login input[type="text"], div.login input[type="password"] {
+background-color: #eee;
+color: #777;
+padding: 4px 10px;
+width: 328px;
+border-radius: 3px;
+}

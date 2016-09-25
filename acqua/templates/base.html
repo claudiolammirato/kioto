@@ -3,19 +3,33 @@
 <title>Acqua</title>
 
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}" />
 
 <div class="navbar">
-
-    <h1>Acqua</h1>
+    <div class="nav-up">
+        <div class="title">
+            Acqua
+        </div>
+        <div class="user">
+            {% if current_user.is_authenticated %}
+            User {{ current_user.username }}
+            {% endif %}
+        </div>
+    </div>
 
     <ul>
-        <li><a href="{{ url_for('admin.index') }}">Home</a></li>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('admin.protected') }}">Acquarium Dimensions</a></li>
-        <li><a href="{{ url_for('admin.protected') }}">Fish Database</a></li>
-        <li><a href="{{ url_for('admin.protected') }}">Plant Database</a></li>
-        <li><a href="{{ url_for('admin.protected') }}">Water Values</a></li>
-        <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+        <div class="sinistra">
+            <li><a href="{{ url_for('admin.index') }}">Home</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('admin.protected') }}">Acquarium Dimensions</a></li>
+            <li><a href="{{ url_for('admin.protected') }}">Fish Database</a></li>
+            <li><a href="{{ url_for('admin.protected') }}">Plant Database</a></li>
+            <li><a href="{{ url_for('admin.protected') }}">Water Values</a></li>
+        </div>
+        <div class="destra">
+            <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+        </div>
         {% else %}
         <li><a href="{{ url_for('admin.login') }}">Sign In</a></li>
         <li><a href="{{ url_for('admin.register') }}">Register</a></li>

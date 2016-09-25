@@ -1,0 +1,26 @@
+div.register {
+width: 400px;
+margin: 50px auto;
+}
+
+div.register h1{
+color: white;
+border-radius: 20px 20px 0px 0px;
+background-color: grey;
+padding: 20px 26px;
+margin: 0px;
+}
+
+div.register form{
+background-color: white;
+border-radius: 0px 0px 20px 20px;
+padding: 20px 26px;
+}
+
+div.register input[type="text"], div.register input[type="password"] {
+background-color: #eee;
+color: #777;
+padding: 4px 10px;
+width: 300px;
+border-radius: 3px;
+}

@@ -1,8 +1,23 @@
-div.navbar h1 {
-color: white;
-text-align: center;
+div.nav-up {
 background-color: grey;
-padding: 14px;
+height: 100px;
+border-radius: 10px 10px 0px 0px;
+
+}
+
+div.title {
+display: inline-block;
+position: relative;
+left: 50%;
+padding: 26px;
+font-size: 250%;
+color: white;
+}
+
+div.user{
+float: right;
+padding-top: 40px;
+padding-right: 15px;
 }
 
 div.navbar ul{
@@ -11,13 +26,14 @@ margin: 0;
 padding: 0;
 overflow: hidden; /*libera la riga*/
 background-color: #333;
+border-radius: 0px 0px 10px 10px;
 }
 
-div.navbar li {
+div.sinistra li {
 float: left;
 }
 
-div.navbar li a {
+div.sinistra li a {
 display: block;
 color: white;
 text-align: center;
@@ -32,3 +48,13 @@ background-color: #111;
 body {
     background-image: url("/static/images/sfondo_sabbia.jpg");
 }
+
+div.destra li a{
+display: block;
+text-decoration: none;
+color: white;
+text-align: center;
+padding: 14px 16px;
+float: right;
+}
+
