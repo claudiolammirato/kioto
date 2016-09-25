@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:/Flask/Kioto/kioto/.idea/kioto.iml" filepath="D:/Flask/Kioto/kioto/.idea/kioto.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/kioto1.iml" filepath="$PROJECT_DIR$/.idea/kioto1.iml" />
     </modules>
   </component>

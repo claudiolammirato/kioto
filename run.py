@@ -9,7 +9,9 @@ from acqua import db, lm
 app = Flask(__name__, template_folder='acqua/templates', static_folder='acqua/static')
 
 app.config['SECRET_KEY'] = 'top secret!'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data-dev.sqlite3'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data-dev.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://spwouivjmdveza:9ucBuMeVKqJ9SdRbadnMhhVleb@ec2-54-235-195-226.compute-1.amazonaws.com:5432/dat2m7ridmqocm'
+
 
 
 # import configuration
