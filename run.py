@@ -31,4 +31,4 @@ if __name__ == '__main__':
 
         #result = mytable1.query.all()
         #print result[1].another_column
-        app.run(debug=True)
+    app.run(debug=True)
