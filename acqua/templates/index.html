@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="body">
     <h1>Home</h1>
 
     <p>This page can be viewed by all users.</p>
     <p>You are {% if not current_user.is_authenticated %}not {% endif %}logged in.</p>
+
+</div>
 {% endblock %}

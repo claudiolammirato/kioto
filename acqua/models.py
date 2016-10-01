@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +27,6 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {0}>'.format(self.username)
-
 
 @lm.user_loader
 def load_user(id):

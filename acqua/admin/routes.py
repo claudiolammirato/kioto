@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user, current_user
 from ..models import User
 from . import admin
 from .forms import LoginForm, RegisterForm
@@ -40,4 +40,4 @@ def index():
 @admin.route('/protected')
 @login_required
 def protected():
-    return render_template('protected.html')
+    return render_template('acqdimension.html', user=current_user.username)
