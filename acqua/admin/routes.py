@@ -3,6 +3,8 @@ from flask_login import login_required, login_user, logout_user, current_user
 from ..models import User, Acqdim, addim, deldim
 from . import admin
 from .forms import LoginForm, RegisterForm, Acqdimension
+from werkzeug import secure_filename
+import os
 
 
 @admin.route('/login', methods=['GET', 'POST'])
@@ -66,3 +68,15 @@ def acqdimension():
         return redirect(url_for('admin.acqdimension'))
 
     return render_template('acqdimension.html', form=form)
+
+@admin.route('/upload')
+@login_required
+def upload_template():
+    return render_template('upload.html')
+
+@admin.route('/uploader', methods = ['GET', 'POST'])
+def uploader():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save(os.path.join('acqua/static/info', secure_filename(f.filename)))
+      return 'file uploaded successfully'
