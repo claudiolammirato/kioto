@@ -15,3 +15,10 @@ class RegisterForm(Form):
     password = PasswordField('Password', validators=[DataRequired(), EqualTo('password2', message='Password must match!!!')])
     password2 = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
+
+class Acqdimension(Form):
+    height = StringField('Height')
+    lenght = StringField('Lenght')
+    width = StringField('Width')
+    liters = StringField('Liters')
+    submit = SubmitField('save')

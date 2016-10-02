@@ -24,10 +24,10 @@
         <div class="sinistra">
             <li><a href="{{ url_for('admin.index') }}">Home</a></li>
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('admin.protected') }}">Acquarium Dimensions</a></li>
-            <li><a href="{{ url_for('admin.protected') }}">Fish Database</a></li>
-            <li><a href="{{ url_for('admin.protected') }}">Plant Database</a></li>
-            <li><a href="{{ url_for('admin.protected') }}">Water Values</a></li>
+            <li><a href="{{ url_for('admin.acqdimension') }}">Acquarium Dimensions</a></li>
+            <li><a href="{{ url_for('admin.acqdimension') }}">Fish Database</a></li>
+            <li><a href="{{ url_for('admin.acqdimension') }}">Plant Database</a></li>
+            <li><a href="{{ url_for('admin.acqdimension') }}">Water Values</a></li>
         </div>
         <div class="destra">
             <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
