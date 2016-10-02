@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from flask import Flask
-from acqua import db, lm, dropbox
+from acqua import db, lm
 
 app = Flask(__name__, template_folder='acqua/templates', static_folder='acqua/static')
 
@@ -13,7 +13,7 @@ app.config['DROPBOX_ACCESS_TYPE'] = 'acqua'
 
 db.init_app(app)
 lm.init_app(app)
-dropbox.init_app(app)
+
 
 # import blueprints
 from acqua.admin import admin as admin_blueprint

@@ -2,11 +2,10 @@ from flask import render_template, redirect, url_for, request, abort, session
 from flask_login import login_required, login_user, logout_user, current_user
 from ..models import User, Acqdim, addim, deldim
 from . import admin
-from .. import dropbox
+
 from .forms import LoginForm, RegisterForm, Acqdimension
 from dropbox.client import DropboxOAuth2Flow, DropboxClient
-from werkzeug import secure_filename
-import os
+
 
 
 @admin.route('/login', methods=['GET', 'POST'])
@@ -71,6 +70,8 @@ def acqdimension():
 
     return render_template('acqdimension.html', form=form)
 
+
+'''UPLOAD PER SCHEDA
 @admin.route('/upload')
 @login_required
 def upload():
@@ -96,7 +97,9 @@ def uploader():
 @admin.route('/success/<path:filename>')
 def success(filename):
     return u'File successfully uploaded as /%s' % filename
+'''
 
+#DOWNLOAD DROPBOX
 @admin.route('/download', methods = ['GET', 'POST'])
 def download():
     if request.method == 'POST':
@@ -122,8 +125,7 @@ def download():
 
 
 
-#DROPBOX  get_file(from_path, rev=None, start=None, length=None)
-
+#DROPBOX  ACCESSO
 DROPBOX_APP_KEY = 'io55a1kjwn30ulf'
 DROPBOX_APP_SECRET = '5el0cfljm1ebct5'
 
@@ -153,5 +155,5 @@ def get_auth_flow():
 
 @admin.route('/dropboxlogout')
 def dropboxlogout():
-    session.clear()
+    session.pop('access_token')
     return redirect(url_for('admin.index'))
