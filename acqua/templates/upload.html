@@ -3,10 +3,10 @@
 {% block body %}
 <div class="body">
     <img src="/static/info/sfondo_sabbia.jpg" alt="Mountain View" style="width:304px;height:228px;">
-    <form action = "{{ url_for('admin.uploader') }}" method = "POST"
-         enctype = "multipart/form-data">
-         <input type = "file" name = "file" />
-         <input type = "submit"/>
+
+    <form action="{{ url_for('admin.uploader') }}" method="post" enctype=multipart/form-data>
+        <input name="file" type="file">'
+        <input type="submit" value="Upload">'
     </form>
 </div>
 {% endblock %}

@@ -1,8 +1,10 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, abort, session
 from flask_login import login_required, login_user, logout_user, current_user
 from ..models import User, Acqdim, addim, deldim
 from . import admin
+from .. import dropbox
 from .forms import LoginForm, RegisterForm, Acqdimension
+from dropbox.client import DropboxOAuth2Flow, DropboxClient
 from werkzeug import secure_filename
 import os
 
@@ -71,12 +73,85 @@ def acqdimension():
 
 @admin.route('/upload')
 @login_required
-def upload_template():
+def upload():
+
     return render_template('upload.html')
 
 @admin.route('/uploader', methods = ['GET', 'POST'])
 def uploader():
-   if request.method == 'POST':
-      f = request.files['file']
-      f.save(os.path.join('acqua/static/info', secure_filename(f.filename)))
-      return 'file uploaded successfully'
+    if request.method == 'POST':
+        #path = 'cla'
+        file = request.files['file']
+
+        client = DropboxClient(session['access_token'])
+
+        filename = secure_filename(file.filename)
+
+        # Actual uploading process
+        result = client.put_file('/' + filename, file.read())
+
+        path = result['path'].lstrip('/')
+    return redirect(url_for('admin.success', filename=path))
+
+@admin.route('/success/<path:filename>')
+def success(filename):
+    return u'File successfully uploaded as /%s' % filename
+
+@admin.route('/download', methods = ['GET', 'POST'])
+def download():
+    if request.method == 'POST':
+
+
+        client = DropboxClient(session['access_token'])
+
+
+
+        # Actual downloading process
+
+        f, metadata = client.get_file_and_metadata('/sfondo_sabbia.jpg')
+        out = open('sfondo_sabbia.jpg', 'wb')
+        out.write(f.read())
+        out.close()
+        print metadata
+
+        return redirect(url_for('admin.index'))
+
+
+    return render_template('download.html')
+
+
+
+
+#DROPBOX  get_file(from_path, rev=None, start=None, length=None)
+
+DROPBOX_APP_KEY = 'io55a1kjwn30ulf'
+DROPBOX_APP_SECRET = '5el0cfljm1ebct5'
+
+@admin.route('/dropbox')
+def dropbox():
+    if not 'access_token' in session:
+        return redirect(url_for('admin.dropbox_auth_start'))
+    return redirect(url_for('admin.index'))
+
+@admin.route('/dropbox-auth-start')
+def dropbox_auth_start():
+    return redirect(get_auth_flow().start())
+
+@admin.route('/dropbox-auth-finish')
+def dropbox_auth_finish():
+    try:
+        access_token, user_id, url_state = get_auth_flow().finish(request.args)
+    except:
+        abort(400)
+    else:
+        session['access_token'] = access_token
+    return redirect(url_for('admin.index'))
+
+def get_auth_flow():
+    redirect_uri = url_for('admin.dropbox_auth_finish', _external=True)
+    return DropboxOAuth2Flow(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, redirect_uri,session, 'dropbox-auth-csrf-token')
+
+@admin.route('/dropboxlogout')
+def dropboxlogout():
+    session.clear()
+    return redirect(url_for('admin.index'))
