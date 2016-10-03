@@ -14,24 +14,19 @@ app.config['DROPBOX_ACCESS_TYPE'] = 'acqua'
 db.init_app(app)
 lm.init_app(app)
 
-
 # import blueprints
 from acqua.admin import admin as admin_blueprint
-
 app.register_blueprint(admin_blueprint)
 
 #mytable1 = TableCreator("mytable1")
-
 #table = mytable1(another_column='claudio')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         db.session.commit()
-
         #db.session.add(table)
         #db.session.commit()
-
         #result = mytable1.query.all()
         #print result[1].another_column
     app.run(debug=True)

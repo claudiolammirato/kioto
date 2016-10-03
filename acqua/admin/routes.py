@@ -1,11 +1,10 @@
 from flask import render_template, redirect, url_for, request, abort, session
 from flask_login import login_required, login_user, logout_user, current_user
-from ..models import User, Acqdim, addim, deldim
+from ..models import User, Acqdim
 from . import admin
 
 from .forms import LoginForm, RegisterForm, Acqdimension
 from dropbox.client import DropboxOAuth2Flow, DropboxClient
-
 
 
 @admin.route('/login', methods=['GET', 'POST'])
@@ -27,18 +26,15 @@ def register():
         return redirect(url_for('admin.login'))
     return render_template('register.html', form = form1)
 
-
 @admin.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('admin.index'))
 
-
 @admin.route('/')
 def index():
     return render_template('index.html')
-
 
 @admin.route('/acqdimension', methods=['GET','POST'])
 @login_required
@@ -48,7 +44,7 @@ def acqdimension():
         #height = Acqdim.query.order_by(Acqdim.height.desc()).all()
         #for x in height:
             #print x.height, x.users, x.lenght, x.width
-        deldim()
+        Acqdim.deldim()
 
         h = Acqdim.query.filter_by(users=current_user).first()
         if h:
@@ -65,7 +61,7 @@ def acqdimension():
         user = User.query.filter_by(username=current_user.username).first()
         #print user
         #print form.height.data
-        addim(form.height.data, form.lenght.data, form.width.data, current_user)
+        Acqdim.addim(form.height.data, form.lenght.data, form.width.data, current_user)
         return redirect(url_for('admin.acqdimension'))
 
     return render_template('acqdimension.html', form=form)
@@ -99,31 +95,23 @@ def success(filename):
     return u'File successfully uploaded as /%s' % filename
 '''
 
-#DOWNLOAD DROPBOX
+#DOWNLOAD DROPBOX  "The items in the basket are %s and %s" % (x,y)
 @admin.route('/download', methods = ['GET', 'POST'])
 def download():
     if request.method == 'POST':
-
-
-        client = DropboxClient(session['access_token'])
-
-
-
-        # Actual downloading process
-
-        f, metadata = client.get_file_and_metadata('/sfondo_sabbia.jpg')
-        out = open('sfondo_sabbia.jpg', 'wb')
-        out.write(f.read())
-        out.close()
-        print metadata
-
+        try:
+            client = DropboxClient(session['access_token'])
+            # Actual downloading process
+            f, metadata = client.get_file_and_metadata('/%s.jpg' % (current_user.username))
+            out = open('acqua/static/user/%s.jpg' % (current_user.username), 'wb')
+            out.write(f.read())
+            out.close()
+            #print metadata
+        except:
+            print'nonloggato'
         return redirect(url_for('admin.index'))
 
-
     return render_template('download.html')
-
-
-
 
 #DROPBOX  ACCESSO
 DROPBOX_APP_KEY = 'io55a1kjwn30ulf'
@@ -155,5 +143,11 @@ def get_auth_flow():
 
 @admin.route('/dropboxlogout')
 def dropboxlogout():
-    session.pop('access_token')
+    try:
+        session.pop('access_token')
+    except:
+        print'nonloggato'
+
     return redirect(url_for('admin.index'))
+
+#FINE AUTH DROPBOX

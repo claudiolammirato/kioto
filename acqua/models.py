@@ -2,6 +2,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db, lm
 from flask_login import UserMixin
 
+#Classe per user login
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -26,6 +27,7 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User {0}>'.format(self.username)
 
+#Classe Dimensione Acquario
 class Acqdim(db.Model):
     __tablename__= 'acquadimension'
     id = db.Column(db.Integer, primary_key=True)
@@ -34,17 +36,19 @@ class Acqdim(db.Model):
     width = db.Column(db.Integer)
     users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-def addim(height, lenght, width, users):
-    info = Acqdim(height=height, lenght=lenght, width=width, users=users)
-    db.session.add(info)
-    db.session.commit()
+    @staticmethod
+    def addim(height, lenght, width, users):
+        info = Acqdim(height=height, lenght=lenght, width=width, users=users)
+        db.session.add(info)
+        db.session.commit()
 
-def deldim():
-    data = Acqdim.query.order_by(Acqdim.height.desc()).all()
-    for x in data:
-        if x.users == None:
-            db.session.delete(x)
-            db.session.commit()
+    @staticmethod
+    def deldim():
+        data = Acqdim.query.order_by(Acqdim.height.desc()).all()
+        for x in data:
+            if x.users == None:
+                db.session.delete(x)
+                db.session.commit()
 
 
 @lm.user_loader
