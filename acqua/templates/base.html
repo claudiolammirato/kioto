@@ -7,6 +7,7 @@
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}" />
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/acqdimension.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/datafish.css') }}" />
 
 <div class="navbar">
     <div class="nav-up">
@@ -25,7 +26,7 @@
             <li><a href="{{ url_for('admin.index') }}">Home</a></li>
             {% if current_user.is_authenticated %}
             <li><a href="{{ url_for('admin.acqdimension') }}">Acquarium Dimensions</a></li>
-            <li><a href="{{ url_for('admin.acqdimension') }}">Fish Database</a></li>
+            <li><a href="{{ url_for('admin.datafish') }}">Fish Database</a></li>
             <li><a href="{{ url_for('admin.acqdimension') }}">Plant Database</a></li>
             <li><a href="{{ url_for('admin.acqdimension') }}">Water Values</a></li>
             <li><a href="{{ url_for('admin.download') }}">download</a></li>

@@ -3,7 +3,7 @@
 {% block body %}
 <div class="body">
     <h1>Home</h1>
-
+    <img src="http://res.cloudinary.com/kioto/image/upload/v1475528374/sample.jpg" alt="Mountain View" style="width:304px;height:228px;">
     <p>This page can be viewed by all users.</p>
     <p>You are {% if not current_user.is_authenticated %}not {% endif %}logged in.</p>
 

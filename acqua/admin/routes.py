@@ -66,6 +66,10 @@ def acqdimension():
 
     return render_template('acqdimension.html', form=form)
 
+@admin.route('/datafish')
+def datafish():
+    return render_template('datafish.html')
+
 
 '''UPLOAD PER SCHEDA
 @admin.route('/upload')
